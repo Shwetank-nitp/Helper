@@ -49,6 +49,9 @@ const EditableText = React.forwardRef(({ value, name }, ref) => {
         flexWrap: "nowrap",
         alignItems: "center",
         gap: "1rem",
+
+        width: { xs: "100%", sm: "75%" },
+        justifyContent: "space-between",
       }}
     >
       {isEditable && (
@@ -59,6 +62,7 @@ const EditableText = React.forwardRef(({ value, name }, ref) => {
           margin="dense"
           required
           name={name}
+          sx={{ width: "100%" }}
         />
       )}
       {!isEditable && (
@@ -76,13 +80,16 @@ const EditableText = React.forwardRef(({ value, name }, ref) => {
 const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
-  width: "95%",
   alignItems: "center",
   minHeight: "3rem",
   width: "500px",
   [theme.breakpoints.down("sm")]: {
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+
     width: "80vw",
+    gap: "1rem",
   },
 }));
 
@@ -232,7 +239,7 @@ function Profile() {
           <Stack gap={2} alignItems={"center"}>
             <ImageComponet src={user?.profileAvatar} ref={avatarRef} />
             {Object.keys(obj).map((key, index) => (
-              <CustomBox key={index} sx={{}}>
+              <CustomBox key={index}>
                 <Typography fontWeight={300} variant="h6">
                   {obj[key].fieldName}
                 </Typography>
