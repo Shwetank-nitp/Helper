@@ -76,7 +76,6 @@ function Navigation() {
       handleToggle();
     }
   }
-  console.log("navigation");
 
   const dispatch = useDispatch();
   async function logout() {
