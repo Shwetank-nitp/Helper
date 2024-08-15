@@ -1,5 +1,5 @@
 class Service {
-  url = String(import.meta.env.URL);
+  url = String(import.meta.env.VITE_URL);
   router;
   constructor(router) {
     if (!this.url) {
