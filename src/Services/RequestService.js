@@ -48,7 +48,6 @@ class RequestService extends Service {
   }
 
   async deleteRequest(_id) {
-    console.log("request:", _id);
     return errorHandler(
       await asyncFetch(this.url + this.endpoints[2], {
         method: "DELETE",

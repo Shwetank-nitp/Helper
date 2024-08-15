@@ -76,7 +76,6 @@ function Search() {
                 query.filter
               );
             } else {
-              console.log("unchecked", query.avalable);
               res = await donationService.searchDonation(
                 query.input,
                 query.filter,

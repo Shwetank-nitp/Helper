@@ -53,8 +53,8 @@ function RequestCard({ info, isDonation = true }) {
       switch (location) {
         case "/requests":
           {
-            const res = await requestService.deleteRequest(info._id);
-            console.log(res);
+            requestService.deleteRequest(info._id);
+
             setMessage("Deleted");
             setSeverity("info");
             setHidden(true);
@@ -62,8 +62,8 @@ function RequestCard({ info, isDonation = true }) {
           break;
         case "/donations":
           {
-            const res = await donationService.removeDonation(info._id);
-            console.log(res);
+            donationService.removeDonation(info._id);
+
             setMessage("Deleted");
             setSeverity("info");
             setHidden(true);

@@ -80,7 +80,6 @@ const ImageComponet = React.forwardRef(({ src }, ref) => {
   }
   function handleImageChange(e) {
     setImage(e.target.files[0]);
-    console.log(e.target.files[0]);
   }
   if (image) {
     src = URL.createObjectURL(image);
@@ -112,7 +111,6 @@ function Profile() {
   const { status, user } = useSelector((s) => s.AuthSlice);
   const nav = useNavigate();
   if (!status) {
-    console.log("im true", status);
     nav("/");
   }
 

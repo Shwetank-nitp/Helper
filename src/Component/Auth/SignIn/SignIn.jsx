@@ -41,7 +41,6 @@ function SignIn() {
       dispatch(login(res.message));
       setMessage("Login Successful");
       setSeverity("success");
-      console.log(res);
       nav("/");
     } catch (error) {
       //API errors

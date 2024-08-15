@@ -58,8 +58,7 @@ function Navigation() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     try {
-      const res = await donationService.makeDonation(data);
-      console.log(res);
+      await donationService.makeDonation(data);
       setMessage("Made Donation");
       setSeverity("success");
     } catch (error) {
@@ -86,7 +85,6 @@ function Navigation() {
       dispatch(authLogout());
       setMessage("logout done!");
       setSeverity("success");
-      console.log(res); // remove me later!
     } catch (error) {
       //API errors
       if (error instanceof ErrorService) {
@@ -120,7 +118,7 @@ function Navigation() {
           }}
         >
           <SelfImprovementIcon sx={{ mr: 1 }} />
-          Boodbank
+          YourHelper
         </Typography>
         <CustomNavLink>
           {isAuth && (

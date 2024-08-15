@@ -16,7 +16,6 @@ class DonationService extends Service {
   }
 
   async makeDonation(data) {
-    console.log(data);
     return errorHandler(
       await asyncFetch(this.url + this.endpoints[5], {
         method: "POST",
@@ -47,7 +46,6 @@ class DonationService extends Service {
   }
 
   async removeDonation(_id) {
-    console.log(_id);
     return errorHandler(
       await asyncFetch(this.url + this.endpoints[0], {
         method: "DELETE",

@@ -37,7 +37,6 @@ function DrowerComponent({ src, name }) {
   const nav = useNavigate();
 
   function handleNavigation(e) {
-    console.log(e.target.name);
     nav(`/${e.target.name}`);
   }
 

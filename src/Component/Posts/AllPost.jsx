@@ -39,14 +39,12 @@ function AllPosts() {
             {
               const res = await requestService.getAllReqDocs(signal);
               setDonations(res.message.accepters);
-              console.log(res);
             }
             break;
           case "/donations":
             {
               const res = await donationService.getAllDonDocs(signal);
               setDonations(res.message.doners);
-              console.log(res);
             }
             break;
           default:
@@ -78,7 +76,6 @@ function AllPosts() {
             setMessage("Posted Donation");
             setSeverity("success");
             setDonations((prev) => [...prev, res.message]);
-            console.log(res);
           }
           break;
         case "/requests":
@@ -87,7 +84,6 @@ function AllPosts() {
             setMessage("Posted Request");
             setSeverity("success");
             setDonations((prev) => [...prev, res.message]);
-            console.log(res);
           }
           break;
         default:
