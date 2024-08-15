@@ -102,10 +102,20 @@ function DrowerComponent({ src, name }) {
             </Button>
           ) : (
             <Stack direction={"row"} gap={2}>
-              <Button startIcon={<VpnKeyIcon />} variant="contained">
+              <Button
+                onClick={handleNavigation}
+                name="signin"
+                startIcon={<VpnKeyIcon />}
+                variant="contained"
+              >
                 signIn
               </Button>
-              <Button startIcon={<LoginIcon />} variant="contained">
+              <Button
+                onClick={handleNavigation}
+                name="login"
+                startIcon={<LoginIcon />}
+                variant="contained"
+              >
                 login
               </Button>
             </Stack>

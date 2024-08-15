@@ -12,6 +12,7 @@ import {
   Stack,
   TextField,
   Typography,
+  styled,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import EditIcon from "@mui/icons-material/Edit";
@@ -72,6 +73,19 @@ const EditableText = React.forwardRef(({ value, name }, ref) => {
   );
 });
 
+const CustomBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  width: "95%",
+  alignItems: "center",
+  minHeight: "3rem",
+  width: "500px",
+  [theme.breakpoints.down("sm")]: {
+    display: "block",
+    width: "80vw",
+  },
+}));
+
 const ImageComponet = React.forwardRef(({ src }, ref) => {
   const [image, setImage] = useState(null);
   function handleUpload() {
@@ -110,9 +124,6 @@ const ImageComponet = React.forwardRef(({ src }, ref) => {
 function Profile() {
   const { status, user } = useSelector((s) => s.AuthSlice);
   const nav = useNavigate();
-  if (!status) {
-    nav("/");
-  }
 
   const obj = {
     fullname: {
@@ -143,6 +154,12 @@ function Profile() {
   };
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!status) {
+      nav("/");
+    }
+  }, [status]);
 
   function handelBack() {
     nav("../");
@@ -209,22 +226,13 @@ function Profile() {
 
   return (
     <Box flexGrow={1} sx={{ margin: "2rem auto" }}>
-      <Card sx={{ width: "500px" }}>
+      <Card>
         <CardHeader title={"User Profile"} />
         <CardContent>
           <Stack gap={2} alignItems={"center"}>
             <ImageComponet src={user?.profileAvatar} ref={avatarRef} />
             {Object.keys(obj).map((key, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "95%",
-                  alignItems: "center",
-                  height: "3rem",
-                }}
-              >
+              <CustomBox key={index} sx={{}}>
                 <Typography fontWeight={300} variant="h6">
                   {obj[key].fieldName}
                 </Typography>
@@ -233,7 +241,7 @@ function Profile() {
                   value={obj[key].value}
                   name={key}
                 />
-              </Box>
+              </CustomBox>
             ))}
           </Stack>
         </CardContent>
