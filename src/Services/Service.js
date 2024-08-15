@@ -2,7 +2,7 @@ class Service {
   url = String(import.meta.env.VITE_URL);
   router;
   constructor(router) {
-    if (!this.url) {
+    if (!this.url || this.url === "undefined") {
       throw new Error("env is not preset");
     }
     this.router = router + "/";
